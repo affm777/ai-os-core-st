@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:,">
+  <title><!-- DESIGNER:TITLE --></title>
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-fg: #0a0a0a;
+      --color-primary: #0a0a0a;
+      --color-secondary: #404040;
+      --color-accent: #0066ff;
+      --color-muted: rgba(10,10,10,0.55);
+      --color-border: rgba(10,10,10,0.08);
+      --font-heading: "Inter", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --space-base: 8px;
+      --gutter: 24px;
+      --radius-base: 16px;
+      --radius-pill: 999px;
+    }
+
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+    html, body { margin: 0; padding: 0; background: var(--color-bg); color: var(--color-fg); font-family: var(--font-body); }
+
+    .designer-canvas {
+      position: relative;
+      width: 1200px;
+      height: 627px;
+      padding: 64px 72px;
+      background: var(--color-bg);
+      background-clip: padding-box;
+      -webkit-background-clip: padding-box;
+      transform: translateZ(0);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .designer-ornament {
+      position: absolute;
+      pointer-events: none;
+      width: 480px;
+      height: 480px;
+      top: -160px;
+      right: -160px;
+      background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+      filter: blur(30px);
+      opacity: 0.18;
+      background-attachment: scroll;
+    }
+
+    .eyebrow { font-family: var(--font-body); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.28em; color: var(--color-accent); margin-bottom: 20px; }
+
+    h1 { font-family: var(--font-heading); font-weight: 600; font-size: 56px; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 24px 0; color: var(--color-primary); max-width: 18ch; }
+    h1 em, .accent { color: var(--color-accent); font-style: italic; }
+
+    .lede { font-size: 22px; line-height: 1.4; color: var(--color-secondary); max-width: 38ch; }
+
+    .footer-row { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 14px; color: var(--color-muted); letter-spacing: 0.04em; }
+    .footer-row .author { font-weight: 600; color: var(--color-primary); letter-spacing: 0; font-family: var(--font-body); }
+  </style>
+</head>
+<body data-format="linkedin-post">
+  <section class="designer-canvas">
+    <div class="designer-ornament"></div>
+    <div>
+      <div class="eyebrow"><!-- DESIGNER:EYEBROW --></div>
+      <h1><!-- DESIGNER:TITLE --></h1>
+      <div class="lede"><!-- DESIGNER:CONTENT --></div>
+    </div>
+    <div class="footer-row">
+      <div class="author"><!-- DESIGNER:AUTHOR --></div>
+      <div><!-- DESIGNER:META --></div>
+    </div>
+  </section>
+</body>
+</html>

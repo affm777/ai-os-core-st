@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:,">
+  <title><!-- DESIGNER:TITLE --></title>
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-fg: #0a0a0a;
+      --color-primary: #0a0a0a;
+      --color-secondary: #404040;
+      --color-accent: #0066ff;
+      --color-muted: rgba(10,10,10,0.55);
+      --color-border: rgba(10,10,10,0.08);
+      --font-heading: "Inter", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --space-base: 8px;
+      --gutter: 24px;
+      --max-width: 600px;
+      --radius-base: 12px;
+      --radius-pill: 999px;
+    }
+
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+    html, body { margin: 0; padding: 0; background: var(--color-bg); color: var(--color-fg); font-family: var(--font-body); }
+
+    .designer-page {
+      position: relative;
+      width: var(--max-width);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 48px 32px 64px 32px;
+      background: var(--color-bg);
+      background-clip: padding-box;
+      -webkit-background-clip: padding-box;
+      transform: translateZ(0);
+      overflow: hidden;
+    }
+
+    .header { padding-bottom: 24px; border-bottom: 1px solid var(--color-border); margin-bottom: 32px; }
+    .eyebrow { font-family: var(--font-body); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.28em; color: var(--color-accent); margin-bottom: 12px; }
+    .meta { font-family: var(--font-mono); font-size: 11px; color: var(--color-muted); letter-spacing: 0.04em; }
+
+    h1 { font-family: var(--font-heading); font-weight: 600; font-size: 32px; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 16px 0; color: var(--color-primary); }
+    h2 { font-family: var(--font-heading); font-weight: 600; font-size: 20px; line-height: 1.3; margin: 32px 0 12px 0; color: var(--color-primary); }
+    h3 { font-family: var(--font-heading); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-secondary); margin: 24px 0 8px 0; }
+    p, li { font-size: 16px; line-height: 1.6; color: var(--color-fg); margin: 0 0 16px 0; }
+    em, .accent { color: var(--color-accent); font-style: italic; }
+    a { color: var(--color-accent); text-decoration: none; border-bottom: 1px solid currentColor; }
+
+    .lede { font-size: 18px; line-height: 1.5; color: var(--color-secondary); margin-bottom: 24px; }
+
+    blockquote { border-left: 3px solid var(--color-accent); margin: 24px 0; padding-left: 20px; font-style: italic; color: var(--color-secondary); }
+
+    .cta { display: inline-block; background: var(--color-primary); color: var(--color-bg); padding: 14px 28px; border-radius: var(--radius-base); font-weight: 600; text-decoration: none; border: none; margin: 16px 0; }
+
+    .footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--color-border); font-family: var(--font-mono); font-size: 11px; color: var(--color-muted); letter-spacing: 0.04em; line-height: 1.6; }
+
+    @page { size: A4; margin: 0; }
+    @media print {
+      html, body { background: var(--color-bg); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .designer-page { width: 100%; min-height: auto; margin: 0; padding: 18mm 16mm;
+        page-break-after: always; break-after: page;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .designer-page:last-child { page-break-after: auto; break-after: auto; }
+    }
+  </style>
+</head>
+<body data-format="newsletter">
+  <article class="designer-page">
+    <div class="header">
+      <div class="eyebrow"><!-- DESIGNER:EYEBROW --></div>
+      <h1><!-- DESIGNER:TITLE --></h1>
+      <div class="meta"><!-- DESIGNER:META --></div>
+    </div>
+    <div class="lede"><!-- DESIGNER:LEDE --></div>
+    <!-- DESIGNER:CONTENT -->
+    <div class="footer"><!-- DESIGNER:FOOTER --></div>
+  </article>
+</body>
+</html>

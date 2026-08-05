@@ -1,0 +1,78 @@
+---
+title: "Vault Clusters — Registry (Cache, auto-generated)"
+created_date: YYYY-MM-DD
+type: meta
+status: active
+generated: true
+tags:
+  - type/meta
+aliases:
+  - Cluster Registry
+  - Vault Clusters
+---
+
+<!--
+Diese Datei ist ein CACHE. Quelle der Wahrheit sind die cluster/*-Tags im
+Frontmatter der Vault-Dateien. Nicht manuell editieren — wird von
+/brain:sort-inbox bei jedem Lauf überschrieben.
+
+VORLAGE FÜR NEUE NUTZER: Projekte und Scopes eintragen wenn du Projekte hast.
+/brain:sort-inbox befüllt diese Datei automatisch wenn du anfängst Decisions/Learnings
+zu erfassen. In den ersten Wochen kannst du diese Datei leer lassen.
+-->
+
+# Vault Clusters
+
+Top-Level-Landkarte für progressives Retrieval. Wird bei jedem Session-Start via `@`-Import aus `~/.claude/rules/vault-workflow.md` geladen.
+
+## Lifecycle-Schwellen (kurz)
+
+- **< 25 Einträge:** Projekt still (flat).
+- **25-29:** Pre-Warning durch `/brain:sort-inbox`.
+- **≥ 30 UND nicht clustered:** Cluster-Vorschlag.
+- **Clustered-Projekt < 15:** Collapse-Vorschlag.
+- **Pro Projekt max. 12 Cluster (weich), 15 (hart).**
+- **Vault-weit max. ~50 aktive Cluster (weich).**
+
+## Slug-Wiederverwendbarkeit und Scope-Heuristik
+
+**Cluster-Slugs sind projekt-agnostisch.** Ein Slug wie `cluster/cloud-database` gehört nicht zu einem Projekt — er ist ein thematisches Label, das jedes Projekt nutzen kann. Wenn ein späteres Projekt dasselbe Thema hat, bekommt es denselben Slug und einen eigenen Block-Index `<projekt>__<slug>.md` parallel. Neue Slugs nur bei wirklich neuen Themen; sonst existierende wiederverwenden.
+
+**Entscheidung `project/<slug>` vs. `scope/cross-project` beim Capture:**
+- **Atomar (projekt-unabhängig) → `scope/cross-project`.** Beispiel: "Postgres-Upsert mit `ON CONFLICT` braucht einen UNIQUE-Index auf der Konfliktspalte." Ein Fremder kann das ohne Projekt-Kontext lesen und anwenden. Wird automatisch in allen Projekt-Lookups mitgeladen.
+- **Kontextgebunden → `project/<slug>`.** Beispiel: "Bei meinem-projekt nutzen wir XYZ weil..." Ohne Projekt-Kontext unverständlich.
+
+**Retrieval:** Cluster-Lookup in Projekt Y lädt `y__cluster.md` + `cross-project__cluster.md` — projekt-spezifische und generische Erkenntnisse zusammen.
+
+## Aktive Projekte und Scopes
+
+[PROJEKT-PLATZHALTER — wird durch /brain:sort-inbox oder manuell befüllt wenn du Projekte hast]
+
+Beispiel-Eintrag (ersetzen mit deinen Projekten):
+
+| Tag | Zustand | Block-Index |
+|---|---|---|
+| `project/mein-projekt` | flat | `clusters/mein-projekt.md` |
+| `scope/cross-project` | flat | `clusters/cross-project.md` |
+
+Exakte Counts aktualisiert `/brain:sort-inbox` aus dem TSV-Index.
+
+## Aktive Cluster mit Keyword-Triggern
+
+[PLATZHALTER — wird durch /brain:sort-inbox befüllt wenn Projekte >= 30 Einträge haben]
+
+## Lade-Regel (kurz)
+
+1. Aufgabe → welches Projekt oder Scope berührt sie?
+2. Zustand aus Tabelle oben:
+   - **flat** → `clusters/<slug>.md` laden.
+   - **clustered** → Keyword-Match gegen die Cluster-Tabelle des Projekts, passenden `clusters/<projekt>__<cluster>.md` laden.
+3. Mehrere Cluster treffen? Bis zu 3 Block-Indexe. Mehr → TSV-Grep auf `vault-index.md` als Fallback.
+4. Nur relevante Detail-Files vollständig lesen. Kein Full-Scan des TSV-Index für thematische Lookups.
+
+## Neue Cluster, Merge, Collapse
+
+- **Neue Cluster** nur via `/brain:sort-inbox`-Vorschlag bei Schwelle 30 + User-Bestätigung.
+- **Merge** vor jedem neuen Vorschlag automatisch geprüft (Topic-Overlap > 60%).
+- **Collapse** bei clustered-Projekt < 15 Einträgen automatisch vorgeschlagen.
+- **Audit** quartalsweise via `/brain:health-check`: Cluster mit < 5 / 90 Tagen ohne Wachstum → Merge-Kandidat.

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="data:,">
+  <title><!-- DESIGNER:TITLE --></title>
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-fg: #0a0a0a;
+      --color-primary: #0a0a0a;
+      --color-secondary: #404040;
+      --color-accent: #0066ff;
+      --color-muted: rgba(10,10,10,0.55);
+      --color-border: rgba(10,10,10,0.08);
+      --color-card-bg: rgba(255,255,255,0.5);
+      --font-heading: "Inter", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --space-base: 8px;
+      --gutter: 32px;
+      --radius-base: 12px;
+      --radius-pill: 999px;
+    }
+
+    @page { size: 1920px 1080px; margin: 0; }
+
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+    html, body { margin: 0; padding: 0; background: var(--color-bg); color: var(--color-fg); font-family: var(--font-body); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    .designer-slide {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      padding: 96px 120px;
+      background: var(--color-bg);
+      background-clip: padding-box;
+      -webkit-background-clip: padding-box;
+      transform: translateZ(0);
+      overflow: hidden;
+      page-break-after: always;
+      break-after: page;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .designer-slide:last-child { page-break-after: auto; break-after: auto; }
+
+    .designer-ornament {
+      position: absolute;
+      pointer-events: none;
+      width: 700px;
+      height: 700px;
+      top: -200px;
+      right: -200px;
+      background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+      filter: blur(40px);
+      opacity: 0.16;
+      background-attachment: scroll;
+    }
+
+    .eyebrow { font-family: var(--font-body); font-weight: 600; font-size: 18px; text-transform: uppercase; letter-spacing: 0.28em; color: var(--color-accent); margin-bottom: 32px; }
+
+    h1 { font-family: var(--font-heading); font-weight: 400; font-size: 96px; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 48px 0; color: var(--color-primary); }
+    h1 em, .accent { color: var(--color-accent); font-style: italic; }
+
+    h2 { font-family: var(--font-heading); font-weight: 600; font-size: 32px; line-height: 1.2; margin: 0 0 24px 0; color: var(--color-primary); }
+
+    p, li { font-size: 24px; line-height: 1.45; color: var(--color-fg); margin: 0 0 16px 0; }
+    ul { padding-left: 32px; margin: 0 0 24px 0; }
+
+    .footer-row { position: absolute; bottom: 64px; left: 120px; right: 120px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 18px; color: var(--color-muted); letter-spacing: 0.04em; }
+
+    .tag { display: inline-flex; align-items: center; gap: 12px; border: 1.5px solid var(--color-primary); border-radius: var(--radius-pill); padding: 9px 18px; font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-primary); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); }
+  </style>
+</head>
+<body data-format="slide-16-9">
+  <!-- DESIGNER:FRAMES -->
+  <section class="designer-slide">
+    <div class="designer-ornament"></div>
+    <div class="eyebrow"><!-- DESIGNER:EYEBROW --></div>
+    <h1><!-- DESIGNER:TITLE --></h1>
+    <div><!-- DESIGNER:CONTENT --></div>
+    <div class="footer-row">
+      <div class="tag"><span class="dot"></span><span><!-- DESIGNER:TAG --></span></div>
+      <div><!-- DESIGNER:SLIDE-NUMBER --></div>
+    </div>
+  </section>
+  <!-- Skill repliziert <section class="designer-slide">...</section> N-mal pro Slide -->
+</body>
+</html>

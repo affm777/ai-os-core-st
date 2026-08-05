@@ -1,0 +1,18 @@
+# CLAUDE.md, {{PROJEKTNAME}}
+
+## Projekt-Kontext
+
+{{KURZBESCHREIBUNG}}
+
+{{TYP_DETAIL_LINE}}
+
+## Vault-Integration
+
+- **Projekt-Tag:** `project/{{SLUG}}`
+- **Vault-Notiz:** `~/Documents/Second-Brain/{{VAULT_FOLDER}}/{{SLUG}}/{{SLUG}}.md`
+
+## Regeln
+
+- Sprache: {{SPRACHE}}
+- Session-Ende: `.planning/STATE.md` aktualisieren oder `/wrap-up`
+- Neue Erkenntnisse als Learning in `~/Documents/Second-Brain/01_Inbox/`

@@ -1,0 +1,34 @@
+# Project State
+
+## Project Reference
+
+**Projekt:** {{PROJEKTNAME}}
+**Beschreibung:** {{KURZBESCHREIBUNG}}
+**Typ:** {{TYP}}
+
+## Current Position
+
+Status: Frisch aufgesetzt, noch kein Kickoff
+Last activity: {{HEUTE}} — Initial-Setup via /new-project
+
+## Accumulated Context
+
+### Decisions
+
+(Noch keine)
+
+### Pending Todos
+
+> Struktur: thematische `#### `-Cluster nach Strängen, niemals nach Herkunft (Meeting, Call). Herkunft gehört ans Item, z. B. als Wikilink in Klammern. Vor jedem neuen Eintrag Dedup gegen bestehende Todos: ergänzen oder ersetzen statt doppeln.
+
+- [ ] Kickoff planen
+
+### Blockers/Concerns
+
+(Keine)
+
+## Session Continuity
+
+Last session: {{HEUTE}}
+Stopped at: Setup abgeschlossen
+Next step: Kickoff

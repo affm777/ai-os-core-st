@@ -1,0 +1,54 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Backup files created by bootstrap.sh
+*.bak.*
+
+# Runtime logs
+safety.log
+*.log
+
+# IDE
+.idea/
+.vscode/
+
+# CRITICAL: Claude OAuth-Token-Datei - NIEMALS ins Repo!
+# Diese Datei liegt unter ~/.claude.json (ohne Dot-Ordner) und enthält Auth-Tokens.
+.claude.json
+**/.claude.json
+*/.claude.json
+
+# Environment / Secrets
+.env
+.env.*
+secrets/
+*.secret
+
+# Node modules (falls jemand npm init macht)
+node_modules/
+
+# Teilnehmer-Bundles: enthalten personenbezogene Daten und echte Firmendaten.
+# Bleiben lokal, Distribution erfolgt manuell beim Pre-Call — NIEMALS pushen.
+claude/participants/
+
+# Lokales Pre-Push-Gate (Drift- und Leak-Check). Enthaelt die Blockliste
+# mit sensiblen Namen — selbst ein Leak-Risiko, daher NIEMALS pushen.
+sync-check.sh
+
+# Dashboard-Runtime: Token, PID und die Collector-Ausgaben (data/*.json) enthalten
+# private Live-Daten (echte Mail-Absender, Kalender). NIEMALS committen.
+dashboard/.token
+dashboard/.pid
+dashboard/data/*.json
+dashboard/backups/
+dashboard/reports/
+dashboard/actions.log
+
+# Dashboard-Nutzerkonfiguration und Drop-Ordner: private Pfade, Base-IDs und
+# CRM-Exporte. Leben nur in der installierten Kopie unter ~/.claude/dashboard,
+# defensiv auch hier ignoriert. NIEMALS committen.
+dashboard/config.json
+dashboard/drop/
+__pycache__/

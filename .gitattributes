@@ -1,0 +1,33 @@
+# Zeilenenden-Regeln fuer Cross-Platform-Checkouts (macOS + Windows).
+# Ohne diese Datei checkt Git for Windows mit core.autocrlf=true alle .sh
+# mit CRLF aus -> "bash: \r: command not found". Details: docs/windows/troubleshooting.md
+* text=auto eol=lf
+
+# Explizit LF (Skripte und Konfiguration, die von bash/node/python gelesen werden)
+*.sh text eol=lf
+*.mjs text eol=lf
+*.js text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.template text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# Windows-native Skripte brauchen CRLF
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Binaerdateien
+*.woff2 binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary

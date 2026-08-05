@@ -1,0 +1,29 @@
+{
+  "actions": [
+    {
+      "name": "system-check",
+      "label": "System-Check (light)",
+      "kind": "shell",
+      "scope": "global",
+      "timeout_ms": 60000,
+      "hint": "Kein Claude-Lauf noetig, ruft check.sh light direkt auf."
+    },
+    {
+      "name": "refresh-data",
+      "label": "Daten aktualisieren",
+      "kind": "shell",
+      "scope": "global",
+      "timeout_ms": 120000,
+      "hint": "Kein Claude-Lauf noetig, ruft refresh.sh direkt auf."
+    },
+    {
+      "name": "briefing",
+      "label": "Tages-Briefing",
+      "kind": "claude",
+      "scope": "global",
+      "prompt": "/briefing",
+      "timeout_ms": 300000,
+      "hint": "Startet den taeglichen Briefing-Lauf (Dry-Run, kein automatischer Slack-Versand)."
+    }
+  ]
+}
