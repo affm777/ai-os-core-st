@@ -469,9 +469,15 @@ check_vault_machinery() {
 
   local idx="$VAULT_DIR/00_Meta/system/vault-index.md"
   if [[ -f "$idx" ]]; then
-    local idx_mtime_h
-    idx_mtime_h=$(stat -f "%Sm" -t "%Y-%m-%d %H:%M" "$idx" 2>/dev/null || stat -c "%y" "$idx" 2>/dev/null)
-    msgs+=("vault-index zuletzt aktualisiert: $idx_mtime_h")
+    # GNU-stat zuerst (wie oben bei mtime_of): unter GNU bedeutet "-f"
+    # Dateisystem-Status und liefert ERFOLGREICH einen Rohdatensatz, der
+    # dann ungefiltert in der Dashboard-Kachel landet (Cloud PC 05.08.).
+    local idx_mtime_h idx_epoch
+    idx_epoch=$(stat -c %Y "$idx" 2>/dev/null) || idx_epoch=$(stat -f %m "$idx" 2>/dev/null) || idx_epoch=""
+    if [[ -n "$idx_epoch" ]]; then
+      idx_mtime_h=$(date -d "@$idx_epoch" "+%Y-%m-%d %H:%M" 2>/dev/null || date -r "$idx_epoch" "+%Y-%m-%d %H:%M" 2>/dev/null)
+      [[ -n "$idx_mtime_h" ]] && msgs+=("vault-index zuletzt aktualisiert: $idx_mtime_h")
+    fi
   fi
 
   local detail_str

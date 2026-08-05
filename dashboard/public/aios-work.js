@@ -133,7 +133,8 @@ function renderKpis(){
   tile("#/aufgaben",nf(openT),"Offene Aufgaben",due?("davon "+due+" heute fällig"):"aus den Status-Dateien",due>0);
   var handeln=mailCounts().handeln||0;
   tile("#/inbox",nf(handeln),"Postfach",handeln===1?"braucht eine Antwort von dir":"brauchen eine Antwort von dir",handeln>0);
-  var calSub=cs.events.length?("nächster um "+cs.events[0].zeit+" Uhr"):(cs.error?"Quelle prüfen":(!cs.pulled?"privat noch nicht gezogen":"frei"));
+  var calZeit=cs.events.length?cs.events[0].zeit:"";
+  var calSub=cs.events.length?(calZeit==="ganztags"?"nächster ist ganztägig":(calZeit?("nächster um "+calZeit+" Uhr"):"heute")):(cs.error?"Quelle prüfen":(!cs.pulled?"privat noch nicht gezogen":"frei"));
   tile(null,nf(cs.events.length),"Termine heute",calSub,cs.error);
   // Rail: nur Second-Brain-Zahlen
   var rail=$("kpiRail");rail.innerHTML='<div class="rail-title">Second Brain</div>';
@@ -167,7 +168,7 @@ function renderFocus(){
     // h.deals kann statt eines Arrays ein Objekt wie {available:false,hint:...} sein
     // (fehlende Pipeline-Quelle) — ohne Array.isArray-Absicherung wirft .filter hier einen TypeError.
     (Array.isArray(h.deals)?h.deals:[]).filter(function(d){return d.faellig;}).slice(0,1).forEach(function(d){pts.push({tone:"warn",kick:"Heute fällig",lead:d.next_step,sub:d.name});});
-    if(Array.isArray(h.kalender)&&h.kalender.length)pts.push({tone:"ok",kick:"Kalender",lead:"Nächster Termin um "+h.kalender[0].zeit+" Uhr",sub:h.kalender[0].titel});
+    if(Array.isArray(h.kalender)&&h.kalender.length){var kz=h.kalender[0].zeit;pts.push({tone:"ok",kick:"Kalender",lead:"Nächster Termin"+(kz==="ganztags"?" ist ganztägig":(kz?" um "+kz+" Uhr":" heute")),sub:h.kalender[0].titel});}
   }
   var chk=data["system-check"];
   if(chk&&chk.present&&chk.data){
