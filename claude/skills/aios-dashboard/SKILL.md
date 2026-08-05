@@ -102,7 +102,14 @@ Vier Wege, als `AskUserQuestion`-Optionen mit diesen Namen. Verankerte Empfehlun
 
 ### Runde 1: Grundsatzfragen
 
-Eine `AskUserQuestion` mit zwei Fragen:
+**Modul-Check zuerst (PFLICHT):** Beide Fragen setzen voraus, dass das jeweilige Dashboard-Modul installiert ist. Vor dem Fragen prüfen:
+
+- Branding-Frage nur stellen, wenn `~/.claude/dashboard/public/aios-branding.js` existiert.
+- Vertriebs-Frage nur stellen, wenn `~/.claude/dashboard/public/aios-sales.js` existiert.
+
+Fehlt ein Modul (abgeleitete Setups liefern ohne beide aus), die zugehörige Frage und ihre Strecke komplett überspringen und das Modul in der Config mit `enabled: false` festhalten. Fehlen beide: Runde 1 und beide Strecken entfallen ersatzlos, direkt zum Abschluss mit der Minimal-Config, ohne die fehlenden Module im Chat zu thematisieren.
+
+Eine `AskUserQuestion` mit bis zu zwei Fragen (je nach Modul-Check):
 - "Machst du Personal Branding oder planst du es?" (Ja/Nein)
 - "Willst du deinen Vertrieb (Pipeline, Leads, Umsatz) im Dashboard sehen?" (Ja/Nein)
 
