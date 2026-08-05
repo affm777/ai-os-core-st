@@ -15,7 +15,7 @@ Lauf (Start: 7 Tage)          klassifiziert, zeigt Digest      Entwürfe für P1
 ## Konventionen in dieser Anleitung
 
 - **„Sag Claude:"** + Block, du tippst das in den **Chat** von Claude Code.
-- Der Ordner `skills/posteingang-triage/` zieht als `.claude/skills/posteingang-triage/` in dein Projekt.
+- Der Ordner `skills/posteingang-triage/` zieht als `~/.claude/skills/posteingang-triage/` in dein globales Setup: der Skill ist damit in jeder Claude-Code-Session verfügbar, taucht im Slash-Menü auf und erscheint im Dashboard unter Skills & Commands.
 
 ## Voraussetzungen
 
@@ -23,7 +23,7 @@ Lauf (Start: 7 Tage)          klassifiziert, zeigt Digest      Entwürfe für P1
 - **Microsoft-365-Connector** verbunden, mit Admin-Zustimmung für den Tenant. Läuft auch mit einem normalen Mitarbeiter-Konto ohne Adminrolle, sobald die Admin-Zustimmung einmal für den Tenant erteilt wurde.
 - Kein Excel nötig, der Skill arbeitet gegen das Postfach. Lokale Ablage im Skill-Ordner: eine `.last-run`-Datei, die sich den Zeitpunkt des letzten Laufs merkt, und eine `TONE.md` mit dem gelernten Schreibstil (deshalb `allowed-tools: Read, Write` in der SKILL.md, statt nur `Read`).
 
-## Schritt 1 — Bundle ins Projekt holen
+## Schritt 1 — Bundle installieren
 
 Sag Claude (er kennt sein Working-Verzeichnis und legt die Dateien passend ab):
 
@@ -31,8 +31,8 @@ Sag Claude (er kennt sein Working-Verzeichnis und legt die Dateien passend ab):
 Lade das Use-Case-Bundle "posteingang-triage" aus meinem Setup-Repo:
 ~/ai-os-core/claude/use-cases/posteingang-triage
 
-Platziere es in meinem aktuellen Projekt so:
-- skills/posteingang-triage/  → .claude/skills/posteingang-triage/
+Installiere es global, damit es in jedem Projekt zur Verfügung steht:
+- skills/posteingang-triage/  → ~/.claude/skills/posteingang-triage/
 
 Bestätige mir, welche Dateien angekommen sind.
 ```

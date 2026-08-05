@@ -16,7 +16,7 @@ seit letztem Lauf            schlägt Zeilen vor          →   Postfach bleibt
 ## Konventionen in dieser Anleitung
 
 - **„Sag Claude:"** + Block, du tippst das in den **Chat** von Claude Code.
-- Der Ordner `skills/rechnungseingang-opos/` zieht als `.claude/skills/rechnungseingang-opos/` in dein Projekt.
+- Der Ordner `skills/rechnungseingang-opos/` zieht als `~/.claude/skills/rechnungseingang-opos/` in dein globales Setup: der Skill ist damit in jeder Claude-Code-Session verfügbar, taucht im Slash-Menü auf und erscheint im Dashboard unter Skills & Commands.
 
 ## Voraussetzungen
 
@@ -25,7 +25,7 @@ seit letztem Lauf            schlägt Zeilen vor          →   Postfach bleibt
 - Eine bestehende OPOS-Excel-Liste mit zwei Blättern ("offen" und "bezahlt") und den Spalten Zahlungsempfänger, IBAN, Rechnungsnummer, Betrag, Beschreibung, Rechnungsdatum, Eingetragen von.
 - Python mit `openpyxl` (für Lesen/Schreiben der Excel-Datei): `pip3 install openpyxl`, falls nicht vorhanden.
 
-## Schritt 1 — Bundle ins Projekt holen
+## Schritt 1 — Bundle installieren
 
 Sag Claude (er kennt sein Working-Verzeichnis und legt die Dateien passend ab):
 
@@ -33,8 +33,8 @@ Sag Claude (er kennt sein Working-Verzeichnis und legt die Dateien passend ab):
 Lade das Use-Case-Bundle "rechnungseingang-opos" aus meinem Setup-Repo:
 ~/ai-os-core/claude/use-cases/rechnungseingang-opos
 
-Platziere es in meinem aktuellen Projekt so:
-- skills/rechnungseingang-opos/  → .claude/skills/rechnungseingang-opos/
+Installiere es global, damit es in jedem Projekt zur Verfügung steht:
+- skills/rechnungseingang-opos/  → ~/.claude/skills/rechnungseingang-opos/
 
 Bestätige mir, welche Dateien angekommen sind.
 ```

@@ -16,7 +16,7 @@ Excel-Berichte je Standort  →    /standort-kpi-dashboard     →   Reiter „S
 ## Konventionen in dieser Anleitung
 
 - **„Sag Claude:"** + Block, du tippst das in den **Chat** von Claude Code.
-- Der Ordner `skills/standort-kpi-dashboard/` zieht als `.claude/skills/standort-kpi-dashboard/` in dein Projekt, der Ordner `dashboard-modul/` bleibt in deinem Projekt liegen und wird beim ersten „Ja, ins Dashboard aufnehmen" vom Skill selbst ausgeführt.
+- Der Ordner `skills/standort-kpi-dashboard/` zieht als `~/.claude/skills/standort-kpi-dashboard/` in dein globales Setup (in jeder Claude-Code-Session verfügbar, im Slash-Menü und im Dashboard unter Skills & Commands sichtbar), der Ordner `dashboard-modul/` bleibt in deinem Arbeitsordner liegen und wird beim ersten „Ja, ins Dashboard aufnehmen" vom Skill selbst ausgeführt.
 
 ## Voraussetzungen
 
@@ -25,7 +25,7 @@ Excel-Berichte je Standort  →    /standort-kpi-dashboard     →   Reiter „S
 - Python mit `openpyxl` (zum Parsen der Berichte): `pip3 install openpyxl`, falls nicht vorhanden.
 - **Wichtig:** Excel-Anhänge sind über den M365-Connector nicht inline lesbar ("Binary attachment"). Berichte, die als Excel-Datei reinkommen, laufen deshalb ausschließlich über einen Ablage-Ordner (SharePoint-Bibliothek oder OneDrive-Ordner), ersatzweise über einen lokalen Eingangsordner, nie als Mail-Anhang. PDF-Anhänge sind davon nicht betroffen und inhaltlich lesbar.
 
-## Schritt 1 — Bundle ins Projekt holen
+## Schritt 1 — Bundle installieren
 
 Sag Claude (er kennt sein Working-Verzeichnis und legt die Dateien passend ab):
 
@@ -33,8 +33,8 @@ Sag Claude (er kennt sein Working-Verzeichnis und legt die Dateien passend ab):
 Lade das Use-Case-Bundle "standort-kpi-dashboard" aus meinem Setup-Repo:
 ~/ai-os-core/claude/use-cases/standort-kpi-dashboard
 
-Platziere es in meinem aktuellen Projekt so:
-- skills/standort-kpi-dashboard/  → .claude/skills/standort-kpi-dashboard/
+Installiere es global, damit es in jedem Projekt zur Verfügung steht:
+- skills/standort-kpi-dashboard/  → ~/.claude/skills/standort-kpi-dashboard/
 - dashboard-modul/                → ./kpi/dashboard-modul/
 
 Bestätige mir, welche Dateien angekommen sind.
