@@ -333,17 +333,13 @@ ai-os-core/
 
 ### Use-Case-Bundles (`claude/use-cases/`)
 
-Ein Use-Case-Bundle ist ein fertiges, in der Praxis erprobtes Paket aus README und einem oder mehreren Skills für eine konkrete wiederkehrende Aufgabe, gedacht zum Kopieren in ein eigenes Projekt statt zum Selberbauen. Aktuell liegen sieben Bundles vor:
+Ein Use-Case-Bundle ist ein fertiges, in der Praxis erprobtes Paket aus README und einem oder mehreren Skills für eine konkrete wiederkehrende Aufgabe, gedacht zum Installieren statt zum Selberbauen. In diesem Repo liegen drei Bundles:
 
-- `cost-tracker` — Kostenüberblick je Kostenblock und Standort, mit Belegen statt Bauchgefühl.
-- `dev-board` — Gegenstück zu `requirements-board`: Karten vom Notion-Board in Code umsetzen und zurückmelden.
-- `github-board` — GitHub-Projektboard mit vier Skills für den vollen Kreislauf vom Gedanken zum Ticket zum Code.
 - `posteingang-triage` — sichtet neue Mails, ordnet sie Kategorien zu und zeigt eine Abarbeitungsreihenfolge.
 - `rechnungseingang-opos` — überträgt Rechnungs-Mails in die offene-Posten-Liste (Excel).
-- `requirements-board` — Notion-Board für Anforderungen, vom Gespräch zur sauber geschriebenen Karte.
 - `standort-kpi-dashboard` — konsolidiert Standort-Kennzahlen aus Excel-Berichten in einen Dashboard-Reiter.
 
-Jedes Bundle-Verzeichnis enthält eine eigene `README.md` mit Voraussetzungen, Copy-Anleitung und (wo zutreffend) belegten Testergebnissen. Ein Bundle wird genutzt, indem sein `skills/`-Unterordner ins Zielprojekt nach `.claude/skills/` kopiert wird, siehe die Anleitung in der jeweiligen Bundle-README.
+Jedes Bundle-Verzeichnis enthält eine eigene `README.md` mit Voraussetzungen, Installations-Anleitung und (wo zutreffend) belegten Testergebnissen. Ein Bundle wird genutzt, indem sein `skills/`-Unterordner global nach `~/.claude/skills/` kopiert wird, damit es in jedem Projekt zur Verfügung steht, siehe die Anleitung in der jeweiligen Bundle-README.
 
 ### Werkstatt (nur Core, nicht in abgeleiteten Repos)
 
