@@ -6,18 +6,23 @@ Vier Routines empfehlen wir zum Start. Die ersten drei bauen aufeinander auf: di
 
 ---
 
-## Wichtig zuerst: Desktop App, nicht Cowork
+## Wichtig zuerst: Local Routines, nicht Cloud Routines
 
-Routines gibt es an zwei Stellen, und nur eine davon funktioniert für diese drei Aufgaben.
+Routines gibt es an zwei Stellen, und nur eine davon funktioniert für diese Aufgaben.
 
 | | Wo es läuft | Zugriff auf deine Skills und den Vault |
 |---|---|---|
-| **Routines in der Desktop App** | dein Rechner | ja, vollständig |
-| **Cloud-Routines (Cowork)** | Anthropic-Server | nein |
+| **Local Routines** (Desktop App) | dein Rechner | ja, vollständig |
+| **Cloud Routines** | Anthropic-Server | nein |
 
-Die drei Routines unten rufen alle einen `/brain:`-Skill auf und schreiben in deinen lokalen Vault. In der Cloud gibt es beides nicht. Eine dort angelegte Routine schlägt fehl, und zwar auf eine verwirrende Art: Der Fehler sieht aus wie ein kaputter Skill, ist aber nur der falsche Ort.
+Die Routines unten rufen Skills auf und schreiben auf deinen Rechner. In der Cloud gibt es beides nicht. Eine dort angelegte Routine schlägt fehl, und zwar auf eine verwirrende Art: Der Fehler sieht aus wie ein kaputter Skill, ist aber nur der falsche Ort.
 
 **Also immer: Claude Desktop App → Routines → New routine → Local.**
+
+Zwei Einstellungen gelten für alle vier Routines gleich:
+
+- **Permission idealerweise auf „Auto".** Eine Routine läuft unbeaufsichtigt; steht die Permission strenger, bleibt der Lauf mittendrin an einer Bestätigungsfrage hängen, die gerade niemand beantwortet. Auto ist eine Empfehlung, keine Pflicht: Wer restriktiver bleiben will, bestätigt die Berechtigungen beim ersten Lauf einmal dauerhaft.
+- **Modell: Sonnet 5 reicht** für alle vier Aufgaben.
 
 Der Rechner muss zur geplanten Zeit laufen und die App offen sein. Schaltet sich der Laptop schlafen, pausiert die Routine. In der Übersicht gibt es dafür einen „Aktiv halten"-Schalter.
 
@@ -50,6 +55,8 @@ Danach der eigentliche Lauf:
 
 **Empfohlener Zeitplan:** täglich, früh morgens (z. B. 06:00). Dann liegt die Nachbereitung von gestern schon da, wenn du den Rechner aufklappst.
 
+**Einstellungen:** Working folder: keiner nötig · Permission: Auto · Modell: Sonnet 5
+
 ---
 
 ## Routine 2 — Posteingang einsortieren
@@ -76,6 +83,8 @@ Danach der eigentliche Lauf:
 ```
 
 **Empfohlener Zeitplan:** täglich, abends. So läuft das Einsortieren nach getaner Arbeit und nicht mitten hinein.
+
+**Einstellungen:** Working folder: keiner nötig · Permission: Auto · Modell: Sonnet 5
 
 ---
 
@@ -104,13 +113,15 @@ Danach der eigentliche Lauf:
 
 **Empfohlener Zeitplan:** wöchentlich, z. B. Sonntagabend oder Montagfrüh.
 
+**Einstellungen:** Working folder: keiner nötig · Permission: Auto · Modell: Sonnet 5
+
 Der Report landet unter `00_Meta/system/lint-reports/`. Bewusst nur Befund, keine automatischen Korrekturen: Was repariert wird, entscheidest du.
 
 ---
 
 ## Routine 4 — Schaltstelle morgens frisch
 
-Fährt den lokalen Dashboard-Server hoch, zieht alle Daten neu (Systemzustand, Vault, Postfach, Kalender, Vertrieb) und öffnet die Schaltstelle im Browser. Wenn du morgens den Rechner aufklappst, steht der aktuelle Stand schon da.
+Fährt den lokalen Dashboard-Server hoch, zieht alle Daten neu (Systemzustand, Vault, Postfach, Kalender etc., je nachdem, was bei dir verbunden ist) und öffnet die Schaltstelle im Browser. Wenn du morgens den Rechner aufklappst, steht der aktuelle Stand schon da.
 
 **Voraussetzung:** Dashboard installiert (kommt über `bootstrap.sh` mit), Skill `/aios-dashboard` vorhanden.
 
@@ -121,7 +132,7 @@ dashboard-refresh
 
 **Description**
 ```
-Täglicher Frisch-Start der AIOS-Schaltstelle: Server hochfahren, Shell-Collectors und private Connector-Daten (Postfach, Kalender, Vertrieb) neu ziehen, Dashboard öffnen.
+Täglicher Frisch-Start der AIOS-Schaltstelle: Server hochfahren, Shell-Collectors und private Connector-Daten (Postfach, Kalender etc.) neu ziehen, Dashboard öffnen.
 ```
 
 **Instructions**
@@ -133,9 +144,9 @@ Danach der eigentliche Lauf:
 /aios-dashboard refresh
 ```
 
-**Working folder:** Pflichtfeld für diese Routine, siehe eigener Abschnitt unten.
+**Empfohlener Zeitplan:** täglich, kurz vor deinem Arbeitsbeginn (z. B. 09:30). Der Browser öffnet sich dabei automatisch.
 
-**Empfohlener Zeitplan:** täglich, kurz vor deinem Arbeitsbeginn (z. B. 09:30). Der Browser öffnet sich dabei automatisch. Willst du das nicht, hänge an die Instructions an: `aber Schritt 6 (Browser öffnen) überspringen`.
+**Einstellungen:** Working folder: Pflichtfeld, Mac `~/.claude`, Windows `C:\Users\<dein-name>\.claude` (siehe Abschnitt unten) · Permission: Auto · Modell: Sonnet 5
 
 ---
 
@@ -145,21 +156,13 @@ Die ersten drei Routines brauchen kein bestimmtes Verzeichnis. Routine 4 schon, 
 
 Wähle **nicht** `~/.claude/dashboard` allein. Dann liegt der Zeitstempel außerhalb des erlaubten Bereichs, und die Routine bleibt nachts an einer Rückfrage hängen, die niemand beantwortet.
 
-`~/.claude` ist ein versteckter Ordner (der Punkt am Anfang), im Auswahldialog siehst du ihn deshalb nicht. So kommst du trotzdem hin:
+Im Routine-Formular beim Feld **Working folder** auf **Anderen Ordner auswählen** klicken, dann je nach System:
 
-1. Im Routine-Formular beim Feld **Working folder** auf **Anderen Ordner auswählen** klicken
-2. Es öffnet sich der macOS-Ordner-Dialog
-3. **Cmd + Shift + G** drücken, es erscheint eine Eingabezeile
-4. Diesen Pfad hineinkopieren:
-   ```
-   ~/.claude
-   ```
-5. **Enter** drücken, der Dialog springt in den Ordner
-6. **Auswählen** klicken
+**Mac:** `.claude` ist ein versteckter Ordner (der Punkt am Anfang), im Dialog siehst du ihn nicht. Deshalb **Cmd + Shift + G** drücken, in die Eingabezeile `~/.claude` einfügen, **Enter**, dann **Auswählen** klicken.
 
-Danach steht `~/.claude` (bzw. `/Users/<dein-name>/.claude`) im Feld und die Routine läuft unbeaufsichtigt durch.
+**Windows:** Im Dialog zu **Dieser PC → Windows (C:) → Benutzer → <dein Konto>** navigieren; dort ist der Ordner `.claude` sichtbar, anklicken und bestätigen. Alternativ **Strg + L** drücken und den vollständigen Pfad eintippen, z. B. `C:\Users\<dein-name>\.claude`. Wichtig: nicht `~/.claude` eintippen, die Tilde versteht Windows nicht und der Dialog antwortet mit „You can't open this location using this program".
 
-> **Unter Windows:** Im Datei-Dialog den Pfad `C:\Users\<dein-name>\.claude` direkt in die Adressleiste oben eintippen und Enter drücken. Ist der Ordner nicht sichtbar, im Explorer unter **Ansicht** die Option **Ausgeblendete Elemente** einblenden.
+Danach steht der Pfad im Feld und die Routine läuft unbeaufsichtigt durch.
 
 ---
 
@@ -171,13 +174,13 @@ Danach steht `~/.claude` (bzw. `/Users/<dein-name>/.claude`) im Feld und die Rou
 4. **Name** kopieren und einsetzen
 5. **Description** kopieren und einsetzen
 6. **Instructions** kopieren und einsetzen
-7. **Working folder** setzen, falls die Routine ein bestimmtes Verzeichnis braucht (Routines 1 bis 3: nicht nötig. Routine 4: `~/.claude`, siehe Abschnitt oben)
-8. **Schedule** wählen
+7. **Working folder** setzen, falls die Routine ein bestimmtes Verzeichnis braucht (Routines 1 bis 3: nicht nötig. Routine 4: Mac `~/.claude`, Windows `C:\Users\<dein-name>\.claude`, siehe Abschnitt oben)
+8. **Schedule** wählen, **Permission** auf **Auto**, **Modell** auf **Sonnet 5**
 9. Speichern, dann **„Aktiv halten"** in der Übersicht einschalten
 
 Jedes Feld hat oben einen eigenen Kopier-Block. Du kopierst also dreimal einzeln, statt einen Sammelblock auseinanderzupflücken.
 
-Beim ersten Lauf fragt Claude nach Berechtigungen. Bestätige sie einmal dauerhaft, sonst bleibt die Routine beim nächsten unbeaufsichtigten Lauf hängen.
+Steht die Permission nicht auf Auto, fragt Claude beim ersten Lauf nach Berechtigungen. Bestätige sie einmal dauerhaft, sonst bleibt die Routine beim nächsten unbeaufsichtigten Lauf hängen.
 
 ---
 
@@ -191,9 +194,9 @@ Wichtig: Dieser Zeitstempel bedeutet nur „Lauf gestartet", nicht „Lauf erfol
 
 Häufigste Ursachen, in dieser Reihenfolge:
 
-1. Routine in Cowork statt in der Desktop App angelegt
+1. Routine als Cloud Routine statt als Local Routine angelegt
 2. Laptop war zur geplanten Zeit zu, „Aktiv halten" nicht eingeschaltet
-3. Berechtigungen beim ersten Lauf nicht dauerhaft bestätigt
+3. Permission nicht auf Auto und Berechtigungen beim ersten Lauf nicht dauerhaft bestätigt
 4. Connector abgelaufen — bei Fathom hilft neu verbinden
 
 ---
