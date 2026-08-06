@@ -55,7 +55,7 @@ Danach der eigentliche Lauf:
 
 **Empfohlener Zeitplan:** täglich, früh morgens (z. B. 06:00). Dann liegt die Nachbereitung von gestern schon da, wenn du den Rechner aufklappst.
 
-**Einstellungen:** Working folder: keiner nötig · Permission: Auto · Modell: Sonnet 5
+**Einstellungen:** Working folder: Mac `~/Documents/Second-Brain`, Windows `C:\Users\<dein-name>\Documents\Second-Brain` · Permission: Auto · Modell: Sonnet 5
 
 ---
 
@@ -84,7 +84,7 @@ Danach der eigentliche Lauf:
 
 **Empfohlener Zeitplan:** täglich, abends. So läuft das Einsortieren nach getaner Arbeit und nicht mitten hinein.
 
-**Einstellungen:** Working folder: keiner nötig · Permission: Auto · Modell: Sonnet 5
+**Einstellungen:** Working folder: Mac `~/Documents/Second-Brain`, Windows `C:\Users\<dein-name>\Documents\Second-Brain` · Permission: Auto · Modell: Sonnet 5
 
 ---
 
@@ -113,7 +113,7 @@ Danach der eigentliche Lauf:
 
 **Empfohlener Zeitplan:** wöchentlich, z. B. Sonntagabend oder Montagfrüh.
 
-**Einstellungen:** Working folder: keiner nötig · Permission: Auto · Modell: Sonnet 5
+**Einstellungen:** Working folder: Mac `~/Documents/Second-Brain`, Windows `C:\Users\<dein-name>\Documents\Second-Brain` · Permission: Auto · Modell: Sonnet 5
 
 Der Report landet unter `00_Meta/system/lint-reports/`. Bewusst nur Befund, keine automatischen Korrekturen: Was repariert wird, entscheidest du.
 
@@ -152,7 +152,7 @@ Danach der eigentliche Lauf:
 
 ## Working folder für Routine 4 setzen
 
-Die ersten drei Routines brauchen kein bestimmtes Verzeichnis. Routine 4 schon, denn sie schreibt an zwei festen Stellen: in `~/.claude/dashboard/` (Server, Token, Daten) und in `~/.claude/scheduled-tasks/dashboard-refresh/` (Lauf-Zeitstempel). Der gemeinsame Nenner ist `~/.claude`.
+Die ersten drei Routines bekommen als Working folder den Second Brain (`~/Documents/Second-Brain`); der ist im Auswahldialog normal sichtbar, einfach hinklicken. Routine 4 ist der Sonderfall, denn sie schreibt an zwei festen Stellen: in `~/.claude/dashboard/` (Server, Token, Daten) und in `~/.claude/scheduled-tasks/dashboard-refresh/` (Lauf-Zeitstempel). Der gemeinsame Nenner ist `~/.claude`.
 
 Wähle **nicht** `~/.claude/dashboard` allein. Dann liegt der Zeitstempel außerhalb des erlaubten Bereichs, und die Routine bleibt nachts an einer Rückfrage hängen, die niemand beantwortet.
 
@@ -174,7 +174,7 @@ Danach steht der Pfad im Feld und die Routine läuft unbeaufsichtigt durch.
 4. **Name** kopieren und einsetzen
 5. **Description** kopieren und einsetzen
 6. **Instructions** kopieren und einsetzen
-7. **Working folder** setzen, falls die Routine ein bestimmtes Verzeichnis braucht (Routines 1 bis 3: nicht nötig. Routine 4: Mac `~/.claude`, Windows `C:\Users\<dein-name>\.claude`, siehe Abschnitt oben)
+7. **Working folder** setzen (Routines 1 bis 3: der Second Brain, `~/Documents/Second-Brain`. Routine 4: Mac `~/.claude`, Windows `C:\Users\<dein-name>\.claude`, siehe Abschnitt oben)
 8. **Schedule** wählen, **Permission** auf **Auto**, **Modell** auf **Sonnet 5**
 9. Speichern, dann **„Aktiv halten"** in der Übersicht einschalten
 
